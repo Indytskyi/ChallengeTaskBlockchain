@@ -1,6 +1,5 @@
 package com.indytskyi.entity;
 
-import com.indytskyi.entity.Block;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import lombok.Getter;
 public class Blockchain implements Serializable {
     private static final long serialVersionUID = 1L;
     private final List<Block> blocks = new ArrayList<>();
-    private int startZeros = 0;
+    private int startZeros;
     private final int countOfBlocks = 15;
 
     public synchronized void addBlock(Block block) {
@@ -31,7 +30,7 @@ public class Blockchain implements Serializable {
     private void validZerosInHash(Block block) {
 
         if (block.getTimeOfGeneratingBlock() > 2000) {
-            startZeros -= 1;
+            startZeros = startZeros == 0 ? 0 : startZeros - 1;
             block.setMessageN("\nN was decreased to " + startZeros);
 
         } else if (block.getTimeOfGeneratingBlock() < 20) {

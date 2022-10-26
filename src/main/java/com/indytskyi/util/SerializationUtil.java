@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+//class for a future :)
 public class SerializationUtil {
 
     public static void serialize(Object obj, String fileName) throws IOException {
