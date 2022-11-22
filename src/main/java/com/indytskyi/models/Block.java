@@ -1,4 +1,4 @@
-package com.indytskyi.entity;
+package com.indytskyi.models;
 
 import java.io.Serializable;
 import java.time.LocalTime;
@@ -10,15 +10,15 @@ import lombok.Setter;
 public class Block implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private final long idOfMiner;
+    private final int balance = 100;
     private long timestamp;
     private long timeOfGeneratingBlock;
     private final String hashOfThePreviousBlock;
     private int id;
     private long magicNumber;
     private String hashOfTheBlock;
-    private final long idOfMiner;
     private String messageN;
-    private final int balance = 100;
 
     public Block(String hashOfThePreviousBlock, long idOfMiner) {
         timeOfGeneratingBlock = LocalTime.now().toSecondOfDay();

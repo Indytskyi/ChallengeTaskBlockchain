@@ -1,4 +1,4 @@
-package com.indytskyi.entity;
+package com.indytskyi.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,8 +9,8 @@ import lombok.Getter;
 public class Blockchain implements Serializable {
     private static final long serialVersionUID = 1L;
     private final List<Block> blocks = new ArrayList<>();
-    private int startZeros;
     private final int countOfBlocks = 15;
+    private int startZeros;
 
     public synchronized void addBlock(Block block) {
         if (isValid(block)) {

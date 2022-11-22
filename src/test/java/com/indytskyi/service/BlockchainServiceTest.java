@@ -2,22 +2,28 @@ package com.indytskyi.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.indytskyi.entity.Blockchain;
-import java.util.concurrent.CountDownLatch;
+import com.google.common.util.concurrent.MoreExecutors;
+import com.indytskyi.models.Blockchain;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import org.junit.jupiter.api.Test;
 
 class BlockchainServiceTest {
 
     @Test
     public void testSummationWithConcurrency() {
-        int countOfTheThread = Runtime.getRuntime().availableProcessors();
-        ExecutorService service = Executors.newFixedThreadPool(countOfTheThread);
+        //GIVEN
+        var expectedBlocks = 15;
+        ExecutorService service = MoreExecutors.newDirectExecutorService();
         Blockchain blockchain = new Blockchain();
-        BlockchainService blockchainService = new BlockchainService();;
+        BlockchainService blockchainService = new BlockchainService();
+
+        //WHEN
         blockchainService.builtAndPrintBlocks(blockchain, service);
         service.shutdown();
+
+        //THEN
+        var actual = blockchain.getBlocks().size();
+        assertEquals(expectedBlocks, actual);
     }
 
 }

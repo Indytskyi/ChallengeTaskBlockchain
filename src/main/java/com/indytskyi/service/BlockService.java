@@ -1,7 +1,7 @@
 package com.indytskyi.service;
 
 import com.indytskyi.util.StringUtil;
-import com.indytskyi.entity.Block;
+import com.indytskyi.models.Block;
 import java.time.LocalTime;
 import java.util.Random;
 
@@ -20,10 +20,10 @@ public class BlockService {
             block.setMagicNumber(random.nextLong());
             block.setHashOfTheBlock(StringUtil.applySha256(block.getId() + block.getTimeOfGeneratingBlock() +
                     block.getHashOfThePreviousBlock() + block.getMagicNumber()));
-        } while (!isHaveCurrentZeros(zeroes, block));
+        } while (!isHasCurrentZeros(zeroes, block));
     }
 
-    private boolean isHaveCurrentZeros(int zeroes, Block block) {
+    private boolean isHasCurrentZeros(int zeroes, Block block) {
         for (int i = 0; i < zeroes; i++) {
             if (block.getHashOfTheBlock().charAt(i) != '0') {
                 return false;
@@ -31,9 +31,5 @@ public class BlockService {
         }
         return true;
     }
-
-
-
-
 
 }

@@ -1,4 +1,4 @@
-package com.indytskyi.entity;
+package com.indytskyi.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

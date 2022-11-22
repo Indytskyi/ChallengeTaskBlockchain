@@ -1,7 +1,6 @@
 package com.indytskyi;
 
-
-import com.indytskyi.entity.Blockchain;
+import com.indytskyi.models.Blockchain;
 import com.indytskyi.service.BlockchainService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

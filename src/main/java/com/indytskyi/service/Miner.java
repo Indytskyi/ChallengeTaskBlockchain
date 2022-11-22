@@ -1,7 +1,7 @@
 package com.indytskyi.service;
 
-import com.indytskyi.entity.Block;
-import com.indytskyi.entity.Blockchain;
+import com.indytskyi.models.Block;
+import com.indytskyi.models.Blockchain;
 
 public class Miner implements Runnable {
     private final Blockchain blockchain;
@@ -19,6 +19,5 @@ public class Miner implements Runnable {
             blockchain.addBlock(block);
 
         }
-
     }
 }
